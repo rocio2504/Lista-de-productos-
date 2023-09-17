@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>Unac</title>
+    <style>
+      * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #33b5e5;
+  --secondary: #0099cc;
+  --color: #4285f4;
+}
+
+body {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  position:relative;
+  z-index: 100;
+}
+
+h1 {
+  background-color: var(--primary);
+  text-align: center;
+  border-radius: 5px;
+  padding: 10px 5px;
+}
+
+.container {
+  width: 80%;
+  max-width: 1800px;
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+}
+
+#app {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  width: 100%;
+}
+.item {
+  padding: 15px;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.14),
+  0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+
+  display: grid;
+  grid-template: 1/2;
+  grid-template-areas: "img data";
+}
+
+.item-img {
+  display: block;
+  width: 110px;
+  height: 120px;
+
+  max-width: 400px;
+  margin:auto;
+
+  grid-area: img;
+}
+
+.data {
+  grid-area: data;
+  padding: 10px;
+
+  text-align: center;
+  text-overflow: ellipsis;
+}
+
+.name {
+  color: var(--color);
+  font-size: 20px;
+  text-align: center;
+  text-overflow: ellipsis;
+}
+
+.description {
+  color: black;
+}
+
+.link {
+  color: #fff;
+  background-color: #28a745;
+  text-decoration: none;
+  text-align: center;
+  padding: 0.4rem 0.8rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.precio{
+  color:black;
+
+  display: block;
+  margin: 10px;
+
+  font-size: 20px
+}
+
+.precio:after{
+  content: "$";
+  color:red;
+
+  margin: 5px;
+}
+
+@media(min-width:500px){
+  .item-img {
+    width: 190px;
+    height: 190px;
+  }
+}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Lista de productos UNAC</h1>
+    </div>
+    <div class="container">
+      <div id="app"></div>
+    </div>
+  </body>
+  <script>
+    let data=[
+  {
+  imagen:"https://cnet4.cbsistatic.com/img/r72mOB83QyFW0VsnvboCDRNVqkA=/940x0/2019/12/04/4fc2ed06-c41c-4ced-9628-d86b262026ac/galaxy-s11-plus-1.jpg",
+  name:"Samsung Galaxy",
+  description:"El Samsung Galaxy S6 es la sexta generación de la serie Galaxy S, esta vez presentando un rediseño radical, enfocándose en el uso de materiales como aluminio en lugar de plástico.",
+  precio: 1000
+  },
+  {
+  imagen:"https://electrodomesticosjared.pe/wp-content/uploads/2019/11/CELULAR-MOTOROLA-G6-ELECTRODOMESTICOS-JARED.png",
+  name:"Motorola Moto G6",
+  description:"Pantalla 5.7 - Procesador Snapdragon 430 1.4GHz - 3GB RAM-  32GB microSD - Cámara trasera 13MP - Cámara Delantera: 8MP - Vídeo Full HD - Batería: 4000 mAh Carga Rapida - Android 8.0 - Radio FM",
+  precio: 999
+  },
+  {
+  imagen:"https://peruimporta.com/wp-content/uploads/2020/02/a71web1.jpg",
+  name:"Samsung  Galaxy A71",
+  description:"La pantalla Infinity-O Galaxy A71, de 6,7 pulgadas y simétricamente alineada incluye la tecnología de color Super AMOLED que ofrece colores reales en todo lo que ves y en lo que haces, desde juegos y películas, hasta navegación web y acciones multitarea.",
+  precio: 1500
+  },
+  {
+  imagen:"https://www.dhresource.com/0x0/f2/albu/g6/M01/91/91/rBVaR1sI8zmAawaBAABMYp6fO-w823.jpg",
+  name:"Sony XPERIA",
+  description:"Reformado Teléfonos Móviles original Sony Xperia Z4 E6553 desbloqueados Octa Core 3 GB de RAM 32GB ROM 5,2 pulgadas 20.7MP 4G LTE ",
+  precio: 1300
+  },
+  {
+  imagen:"https://pe.celulares.com/fotos/alcatel-pop-4s-37965-g-alt.jpg",
+  name:"Alcatel Pop 4S",
+  description:"Pantalla grande1080 x 1920 Pixels - AndroidAndroid OS, v6.0 (Marshmallow) -  Cámara Trasera 13 MP y frontal 5 MP - Memoria16 Gb y 2 Gb de RAM  -  Internet 4G y WiFi - Batería2960 Amperios hora",
+  precio: 1100
+  },
+  {
+  imagen:"https://img.clasf.pe/2018/12/23/Celular-Lenovo-4g-Lte-cmara-13mp-procesador-Octa-Core-20181223080928.1875120015.jpg",
+  name:"Lenovo Vibe K5",
+  description:" Pantalla: 5, 720 x 1280 pixels. Procesador: Snapdragon 415 1.5GHz. RAM: 2GB. Almacenamiento: 16GB. Expansión: microSD. Cámara: 13 MP. Batería: 2750 mAh.",
+  precio: 800
+  },
+  {
+  imagen:"https://pe.celulares.com/fotos/huawei-y9s-84567-g-alt.jpg",
+  name:"Huawei Y9s",
+  description:"Pantalla grande1080 x 2340 Px –Sistema Operativo Android 9.0 (Pie) – Cámara Trasera Triple 48 + 8 + 2 MP y frontal 16 MP – Memoria 128 Gb y 6 Gb de RAM – Internet 4G y WiFi Batería 4000 Amperios hora. ",
+  precio: 1050
+  },
+  {
+  imagen:"https://pe.celulares.com/fotos/alcatel-pixi-3-4-30222-g-alt.png",
+  name:"Alcatel Pixi 3",
+  description:"Sistema Dual SIM opcional - ProcesadorAdreno 304, Dual-core 1 GHz - Expansión memoria microSD (hasta 32 Gb) – cámara Geoetiquetado, HDR, Panorama.",
+  precio: 899
+  },
+  {
+  imagen:"https://pe.celulares.com/fotos/nokia-lumia-635-27598-g-alt.png",
+  name:"Nokia Lumia 635",
+  description:"Pantalla grande 480 x 854 Pixels – Sistema Operativo Windows Phone 8.1 - Cámara Trasera 5 MP - Memoria8 Gb y 512 Mb de RAM – Internet 4G y WiFi - Batería1830 Amperios hora. ",
+  precio:799
+  },
+  {
+  imagen:"https://innovateconline.webcindario.com/wp-content/uploads/celu1-lenovo.jpg",
+  name:"Lenovo A319",
+  description:"Pantalla: 4 - Cámara: 5 MPX, Frontal 2 MPX - Procesador: Dual Core 1.3 Ghz - Sistema Operativo: ANDROID 4.4 - Memoria Interna: 4GB. ",
+  precio: 3000
+  }
+];
+
+
+let $app=document.getElementById("app");
+
+function getData(){
+  let render=data.map((item,index)=>{
+    return (
+      `
+      <div class="item">
+            <img src="${item.imagen}" class="item-img" alt="${index}"/>
+            <div class="data">
+              <p class="name">${item.name}</p>
+              <p class="description">${item.description}</p>
+              <p class="precio">${item.precio}</p>
+              <a class="link" href="${item.imagen}" target="_blank" >Mas informacion</a>
+            </div>
+      </div>
+      `
+    )
+  })
+
+  return render.join("");
+}
+
+document.addEventListener("DOMContentLoaded",function(event){
+  $app.innerHTML=getData();
+});
+  </script>
+</html>
